@@ -4,7 +4,7 @@ from selling_platform.constants.base_constants import BaseConstants
 from selling_platform.model_manager.soft_deletion_queryset import SoftDeletionQuerySet
 
 
-class BaseModelManager(models.Manager):
+class BaseManager(models.Manager):
     """
     A custom model manager for our base model
     """
@@ -14,7 +14,7 @@ class BaseModelManager(models.Manager):
         'alive_only' kwarg is called on objects in each model to return whether alive objects or all of them.
         """
         self.alive_only = kwargs.pop(BaseConstants.alive_only, True)
-        super(BaseModelManager, self).__init__(*args, **kwargs)
+        super(BaseManager, self).__init__(*args, **kwargs)
 
     def get_queryset(self):
         """

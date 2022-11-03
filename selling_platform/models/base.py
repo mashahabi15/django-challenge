@@ -1,17 +1,17 @@
 from django.db import models
 from django.utils import timezone
 
-from selling_platform.model_manager.base_model_manager import BaseModelManager
+from selling_platform.model_manager.base_manager import BaseManager
 
 
-class BaseModel(models.Model):
+class Base(models.Model):
     # Soft Deletion
     is_deleted = models.BooleanField(default=False)
     deletion_time = models.DateTimeField(blank=True, null=True, default=None)
 
     # override these fields accordingly
-    objects = BaseModelManager()
-    all_objects = BaseModelManager(alive_only=False)
+    objects = BaseManager()
+    all_objects = BaseManager(alive_only=False)
 
     # we want to have these fields in each model to log creation time and last update time of an object
     creation_time = models.DateTimeField(auto_now_add=True)
@@ -33,7 +33,7 @@ class BaseModel(models.Model):
         """
         Watch Out! Call this method only when you want to really delete an object!
         """
-        super(BaseModel, self).delete(using=using, keep_parents=keep_parents)
+        super(Base, self).delete(using=using, keep_parents=keep_parents)
 
     def restore(self):
         """
