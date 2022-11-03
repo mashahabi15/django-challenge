@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # selling_platform project apps
+    'users',
+
 ]
 
 MIDDLEWARE = [
