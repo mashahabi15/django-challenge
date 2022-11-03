@@ -5,6 +5,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from matches.constants.match_seat_constants import MatchSeatConstants
 from matches.serializers.assign_seat_to_match_serializer import AssignSeatToMatchSerializer
 from selling_platform.enums.response_notification_enums import ResponseNotificationType
 from selling_platform.security.superuser_permission import IsSuperuser
@@ -49,8 +50,8 @@ class AssignSeatToMatchView(CreateAPIView):
 
         for seat_id in self.request.data.get('seats'):
             initial_data.append({
-                "seat": seat_id,
-                "match": self.kwargs.get("match_id")
+                MatchSeatConstants.seat: seat_id,
+                MatchSeatConstants.match: self.kwargs.get(MatchSeatConstants.match_id),
             })
 
         return initial_data
