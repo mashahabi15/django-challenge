@@ -18,6 +18,14 @@ class User(AbstractBaseUser, Base):
             'Unselect this instead of deleting accounts.'
         ),
     )
+    is_superuser = models.BooleanField(
+        _('superuser status'),
+        default=False,
+        help_text=_(
+            'Designates that this user has all permissions without '
+            'explicitly assigning them.'
+        ),
+    )
 
     # user object managers
     objects = UserManager()
