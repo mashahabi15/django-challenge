@@ -1,6 +1,7 @@
 from django.db import models
 
 from selling_platform.models.base import Base
+from stadiums.constants.stadium_constants import StadiumConstants
 
 
 class Stadium(Base):
@@ -10,4 +11,8 @@ class Stadium(Base):
     class Meta:
         verbose_name = 'Stadium'
         verbose_name_plural = 'Stadiums'
-        db_table = 'stadiums'
+        db_table = 'stadium'
+        unique_together = [
+            StadiumConstants.name,
+            StadiumConstants.city,
+        ]

@@ -27,4 +27,7 @@ urlpatterns = [
     # Stadiums app URLs
     path('api/v1/selling_platform/stadiums/', include(('stadiums.urls', 'users'), namespace='v1_stadiums')),
 
+    # Matches app URLs
+    path('api/v1/selling_platform/matches/', include(('matches.urls', 'users'), namespace='v1_matches')),
+
 ]

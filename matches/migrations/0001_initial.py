@@ -9,42 +9,46 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('stadiums', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Stadium',
+            name='Team',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('is_deleted', models.BooleanField(default=False)),
                 ('deletion_time', models.DateTimeField(blank=True, default=None, null=True)),
                 ('creation_time', models.DateTimeField(auto_now_add=True)),
                 ('last_update_time', models.DateTimeField(auto_now=True)),
-                ('name', models.CharField(max_length=64)),
-                ('city', models.CharField(max_length=32)),
+                ('name', models.CharField(max_length=32)),
+                ('members_num', models.IntegerField()),
             ],
             options={
-                'verbose_name': 'Stadium',
-                'verbose_name_plural': 'Stadiums',
-                'db_table': 'stadium',
+                'verbose_name': 'Team',
+                'verbose_name_plural': 'Teams',
+                'db_table': 'team',
             },
         ),
         migrations.CreateModel(
-            name='Seat',
+            name='Match',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('is_deleted', models.BooleanField(default=False)),
                 ('deletion_time', models.DateTimeField(blank=True, default=None, null=True)),
                 ('creation_time', models.DateTimeField(auto_now_add=True)),
                 ('last_update_time', models.DateTimeField(auto_now=True)),
-                ('section', models.CharField(max_length=16)),
-                ('seat_num', models.IntegerField()),
-                ('stadium_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='seats', to='stadiums.stadium')),
+                ('match_time', models.DateTimeField()),
+                ('match_duration', models.IntegerField()),
+                ('is_active', models.BooleanField(default=False)),
+                ('guest_team', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='guesting_matches', to='matches.team')),
+                ('host_team', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='hosting_matches', to='matches.team')),
+                ('stadium', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='matches', to='stadiums.stadium')),
             ],
             options={
-                'verbose_name': 'Seat',
-                'verbose_name_plural': 'Seat',
-                'db_table': 'seat',
+                'verbose_name': 'Match',
+                'verbose_name_plural': 'Matches',
+                'db_table': 'match',
             },
         ),
     ]

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # selling_platform project apps
     'users',
     'stadiums',
+    'matches',
 
     # 3rd party apps
     'rest_framework',
@@ -94,7 +95,6 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'AUTH_HEADER_TYPES': ('JWT', 'Token',),
 }
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

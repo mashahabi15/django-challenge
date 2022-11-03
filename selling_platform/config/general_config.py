@@ -1,0 +1,3 @@
+class GeneralConfig:
+    MAXIMUM_MATCH_DURATION_HOURS = 4
+    MINUMUM_TIME_OF_REST_HOURS = 2
