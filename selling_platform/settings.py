@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     # 3rd party apps
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': config('DEFAULT_AUTHENTICATION_CLASSES').split(','),
     'DEFAULT_PERMISSION_CLASSES': config('DEFAULT_PERMISSION_CLASSES').split(','),
     'DEFAULT_VERSIONING_CLASS': config('DEFAULT_VERSIONING_CLASS'),
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
 TEMPLATES = [
