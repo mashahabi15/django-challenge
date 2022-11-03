@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     # selling_platform project apps
     'users',
 
+    # 3rd party apps
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +61,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'selling_platform.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': config('DEFAULT_AUTHENTICATION_CLASSES').split(','),
+    'DEFAULT_PERMISSION_CLASSES': config('DEFAULT_PERMISSION_CLASSES').split(','),
+    'DEFAULT_VERSIONING_CLASS': config('DEFAULT_VERSIONING_CLASS'),
+}
 
 TEMPLATES = [
     {
