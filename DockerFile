@@ -1,0 +1,17 @@
+# $ docker build -t selling_platform:MAJOR.MINOR.PATCH .
+
+FROM python:3.9.6
+
+WORKDIR /app/selling_platform
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update
+RUN pip install --upgrade pip
+RUN apt-get install -y --no-install-recommends gcc libc-dev python3-dev
+RUN apt install -y vim
+
+COPY requirements.txt ./requirements.txt
+RUN pip install -r requirements.txt
+
+COPY . .
