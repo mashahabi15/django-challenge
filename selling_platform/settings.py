@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 
 from decouple import config
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # selling_platform project apps
     'users',
+    'stadiums',
 
     # 3rd party apps
     'rest_framework',
@@ -85,6 +86,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'selling_platform.wsgi.application'
+
+# JWT token settings
+# https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'AUTH_HEADER_TYPES': ('JWT', 'Token',),
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
