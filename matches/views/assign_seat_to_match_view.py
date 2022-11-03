@@ -45,7 +45,7 @@ class AssignSeatToMatchView(CreateAPIView):
 
         return Response(data=final_data, status=status_code)
 
-    def prepare_data(self):
+    def prepare_data(self) -> List[dict]:
         initial_data: List[dict] = list()
 
         for seat_id in self.request.data.get('seats'):

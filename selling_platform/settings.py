@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'users',
     'stadiums',
     'matches',
+    'reservations',
 
     # 3rd party apps
     'rest_framework',

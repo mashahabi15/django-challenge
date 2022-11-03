@@ -30,4 +30,7 @@ urlpatterns = [
     # Matches app URLs
     path('api/v1/selling_platform/matches/', include(('matches.urls', 'users'), namespace='v1_matches')),
 
+    # Reservations app URLs
+    path('api/v1/selling_platform/reservations/', include(('reservations.urls', 'users'), namespace='v1_reservations')),
+
 ]

@@ -1,16 +1,11 @@
-from datetime import timedelta
-
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
-from matches.constants.match_constants import MatchConstants
 from matches.constants.match_seat_constants import MatchSeatConstants
 from matches.models import Match
 from matches.models.match_seat import MatchSeat
-from selling_platform.config.general_config import GeneralConfig
-from stadiums.constants.seat_constants import SeatConstants
 from stadiums.models import Seat
 
 
